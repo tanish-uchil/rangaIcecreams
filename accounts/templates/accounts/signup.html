@@ -2,5 +2,46 @@
 {% load static %}
 {% block title %}Signup{% endblock title %}
 {% block body %}
-
+<div class="container p-5 ">
+    <div class="card mx-auto">
+        <div class="card-header text-center">
+            <h1>Signup</h1>
+        </div>
+        <div class="card-body">
+            <form method='POST' enctype='multipart/form-data'>
+                {% csrf_token %}
+                <div class="form-floating m-3">
+                    {{ form.username }}
+                    <label for="{{ form.username.id_for_label }}">Username</label>
+                </div>
+                <div class="form-floating m-3">
+                    {{ form.password1 }}
+                    <label for="{{ form.password1.id_for_label }}">Password</label>
+                </div>
+                <div class="form-floating m-3">
+                    {{ form.password2 }}
+                    <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+                </div>
+                <div class="form-floating m-3">
+                    {{ form.email }}
+                    <label for="{{ form.email.id_for_label }}">Email</label>
+                </div>
+                <div class="form-floating m-3">
+                    {{ form.phone_number }}
+                    <label for="{{ form.phone_number.id_for_label }}">Phone Number</label>
+                </div>
+                <div class="form-floating m-3">
+                    {{ form.address }}
+                    <label for="{{ form.address.id_for_label }}">Address</label>
+                </div>
+                <div class="m-3">
+                    <button type='submit' class="btn btn-success">Signup</button>
+                </div>
+                <div class="m-3">
+                    <a href="{% url "loginUser" %}">Have an account?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock body %}

@@ -7,7 +7,6 @@ class Customer(AbstractUser):
     username = models.CharField(unique=True, max_length=50)
     email = models.CharField(unique=True,max_length=50)
     phone_number = models.CharField(unique=True, max_length=50)
-    profile_pic = models.ImageField(upload_to="profile_pic")
     address = models.CharField(max_length=50)
     
     USERNAME_FIELD = 'username'
