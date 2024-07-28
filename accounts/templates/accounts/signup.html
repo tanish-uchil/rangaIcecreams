@@ -3,6 +3,12 @@
 {% block title %}Signup{% endblock title %}
 {% block body %}
 <div class="container p-5 ">
+    {% if form.errors %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ form.errors}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endif %}
     <div class="card mx-auto">
         <div class="card-header text-center">
             <h1>Signup</h1>
@@ -35,9 +41,9 @@
                     <label for="{{ form.address.id_for_label }}">Address</label>
                 </div>
                 <div class="m-3">
-                    <button type='submit' class="btn btn-success">Signup</button>
+                    <button type='submit' class="btn btn-success w-100">Signup</button>
                 </div>
-                <div class="m-3">
+                <div class="mx-3">
                     <a href="{% url "loginUser" %}">Have an account?</a>
                 </div>
             </form>

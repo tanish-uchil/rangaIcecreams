@@ -33,12 +33,20 @@
           <i class="fas fa-search"></i> <!-- Font Awesome icon -->
         </button>
       </form>
-      <a class="navbar-brand mx-3" href="{% url "cart" %}">
-        <img src="{% static "icecreamShop/nav/shopping-cart.svg" %}" alt="Profile" width="30" height="30">
-      </a>
-      <a class="navbar-brand mx-3" href="{% url "profile" %}">
-        <img src="{% static "icecreamShop/nav/profile.svg" %}" alt="Profile" width="30" height="30">
-      </a>
+      {% if user.is_authenticated %}
+        <a class="navbar-brand mx-3" href="{% url "cart" %}">
+          <img src="{% static "icecreamShop/nav/shopping-cart.svg" %}" alt="Profile" width="30" height="30">
+        </a>
+        <a class="navbar-brand mx-3" href="{% url "profile" %}">
+          {% comment %} <img src="{% static "icecreamShop/nav/profile.svg" %}" alt="Profile" width="30" height="30"> {% endcomment %}
+          {{ user.username }}
+        </a>
+        {% else %}
+          <a class="navbar-brand mx-3" href="{% url "profile" %}">
+            {% comment %} <img src="{% static "icecreamShop/nav/profile.svg" %}" alt="Profile" width="30" height="30"> {% endcomment %}
+            Login
+          </a>
+      {% endif %}
     </div>
   </div>
 </nav>
