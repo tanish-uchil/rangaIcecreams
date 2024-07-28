@@ -32,14 +32,14 @@ AUTH_USER_MODEL =  'accounts.Customer'
 # Application definition
 
 INSTALLED_APPS = [
-    'accounts.apps.AccountsConfig',
-    'icecreamShop.apps.IcecreamshopConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'icecreamShop',
+    'accounts',
 ]
 
 MIDDLEWARE = [
