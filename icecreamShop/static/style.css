@@ -1,0 +1,40 @@
+nav {
+    background-color: #FFCC00;
+}
+
+/* dropdown appear on hover */
+.dropdown-menu {
+    display: none;
+    /* Hide the dropdown menu */
+}
+
+/* Show dropdown menu on hover */
+.nav-item:hover .dropdown-menu {
+    display: block;
+    /* Show the dropdown menu */
+}
+
+/* dot remove from profile image */
+.no-dot{
+    list-style-type: none;
+}
+
+/* increase width of the search box */
+.custom-search-size{
+    width: 800px;
+}
+
+/* custom height for carousel */
+.custom-carousel{
+    height: 700px; /* Adjust height as needed */
+}
+.custom-carousel img{
+    height: 700px; /* height: 100% not working becaue the parent div height is not set to the same so that it is same height of carosel div */
+    object-fit: cover; /* Ensures images cover the container without distortion */
+}
+
+/* image size for card image */
+.card img{
+    height: 250px;
+    object-fit: cover;
+}
