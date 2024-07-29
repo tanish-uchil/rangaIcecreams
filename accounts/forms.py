@@ -48,9 +48,6 @@ class SignUpForm(UserCreationForm):
         
         
 class LoginForm(AuthenticationForm):
-    class Meta:
-        fields = ['username','password']
-        
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["password"].widget.attrs.update({
