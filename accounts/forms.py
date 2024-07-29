@@ -48,5 +48,16 @@ class SignUpForm(UserCreationForm):
         
         
 class LoginForm(AuthenticationForm):
-    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control','placeholder':'username'}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control','placeholder':'password'}))
+    class Meta:
+        fields = ['username','password']
+        
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["password"].widget.attrs.update({
+            "class": "form-control",
+            "placeholder": "Password"
+        })
+        self.fields["username"].widget.attrs.update({
+            "class": "form-control",
+            "placeholder": "Username"
+        })

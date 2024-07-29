@@ -37,23 +37,18 @@
         <a class="navbar-brand mx-3" href="{% url "cart" %}">
           <img src="{% static "icecreamShop/nav/shopping-cart.svg" %}" alt="Profile" width="30" height="30">
         </a>
-        {% comment %} <a class="navbar-brand mx-3" href="{% url "profile" %}">
-          {{ user.username }}
-        </a> {% endcomment %}
-        <a>
+        <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="{% url "profile" %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link " href="{% url "shop" %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               {{ user.username }}
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="{% url "logoutUser" %}">Logout</a></li>
+              <li><a class="dropdown-item m-2" href="{% url "logoutUser" %}">Logout</a></li>
             </ul>
           </li>
-        </a>
-        {% else %}
-          <a class="navbar-brand mx-3" href="{% url "profile" %}">
-            Login
-          </a>
+        </ul>
+      {% else %}
+          <a class="nav-link" href="{% url "profile" %}">Login</a>
       {% endif %}
     </div>
   </div>

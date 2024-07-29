@@ -19,5 +19,6 @@ def shop(request):
 def profile(request):
     return render(request,"icecreamShop/profile.html")
 
+@login_required
 def cart(request):
     return render(request,"icecreamShop/cart.html")
