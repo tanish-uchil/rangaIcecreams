@@ -28,7 +28,7 @@
         </li>
       </ul>
       <form class="d-flex mx-3" role="search">
-        <input class="form-control custom-search-size me-2" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-success" type="submit">
           <i class="fas fa-search"></i> <!-- Font Awesome icon -->
         </button>
@@ -37,13 +37,21 @@
         <a class="navbar-brand mx-3" href="{% url "cart" %}">
           <img src="{% static "icecreamShop/nav/shopping-cart.svg" %}" alt="Profile" width="30" height="30">
         </a>
-        <a class="navbar-brand mx-3" href="{% url "profile" %}">
-          {% comment %} <img src="{% static "icecreamShop/nav/profile.svg" %}" alt="Profile" width="30" height="30"> {% endcomment %}
+        {% comment %} <a class="navbar-brand mx-3" href="{% url "profile" %}">
           {{ user.username }}
+        </a> {% endcomment %}
+        <a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="{% url "profile" %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ user.username }}
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url "logoutUser" %}">Logout</a></li>
+            </ul>
+          </li>
         </a>
         {% else %}
           <a class="navbar-brand mx-3" href="{% url "profile" %}">
-            {% comment %} <img src="{% static "icecreamShop/nav/profile.svg" %}" alt="Profile" width="30" height="30"> {% endcomment %}
             Login
           </a>
       {% endif %}

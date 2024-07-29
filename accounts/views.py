@@ -29,6 +29,8 @@ def signupUser(request):
 def loginUser(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
+        print(form.is_valid())
+        print(form.errors)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
@@ -44,3 +46,7 @@ def loginUser(request):
         'form':form
     }
     return render(request,'accounts/login.html',context=context)
+
+def logoutUser(request):
+    logout(request)
+    return redirect("index")

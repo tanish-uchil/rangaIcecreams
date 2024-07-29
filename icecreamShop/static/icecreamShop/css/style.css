@@ -19,11 +19,6 @@ nav {
     list-style-type: none;
 }
 
-/* increase width of the search box */
-.custom-search-size{
-    width: 700px;
-}
-
 /* custom height for carousel */
 .custom-carousel{
     height: 700px; /* Adjust height as needed */
