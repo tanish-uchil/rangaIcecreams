@@ -14,11 +14,6 @@ nav {
     /* Show the dropdown menu */
 }
 
-/* dot remove from profile image */
-.no-dot{
-    list-style-type: none;
-}
-
 /* custom height for carousel */
 .custom-carousel{
     height: 700px; /* Adjust height as needed */
@@ -38,3 +33,4 @@ nav {
 .review-card{
     width: 25rem;
 }
+
