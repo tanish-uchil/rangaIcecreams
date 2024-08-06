@@ -6,29 +6,29 @@
     <div class="row">
         <div class="col-lg-4">
             <div class="card">
-                <div class="card-header text-center">
-                    <h1>Profile</h1>
-                </div>
                 <div class="card-body">
-                    <form>
-                        <div class="input-group  mb-3">
-                            <input type="text" class="form-control" placeholder="{{ user.username }}" aria-label="Username" aria-describedby="basic-addon1" disabled>
-                            <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
-                        </div>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="{{ user.email }}" aria-label="Username" aria-describedby="basic-addon1" disabled>
-                            <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
-                        </div>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="{{ user.phone_number }}" aria-label="Username" aria-describedby="basic-addon1" disabled>
-                            <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
-                        </div>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="{{ user.address }}" aria-label="Username" aria-describedby="basic-addon1" disabled>
-                            <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
-                        </div>
-                        <button class="btn btn-primary w-100">Change Password</button>
-                    </form>
+                    <div class="card-header text-center">
+                        <h1>Profile</h1>
+                    </div>
+                    <div class="form-floating m-3">
+                        {{ updateForm.username }}
+                        <label for="{{ updateForm.username.id_for_label }}">Username</label>
+                    </div>
+                    <div class="form-floating m-3">
+                        {{ updateForm.email }}
+                        <label for="{{ updateForm.email.id_for_label }}">Email</label>
+                    </div>
+                    <div class="form-floating m-3">
+                        {{ updateForm.phone_number }}
+                        <label for="{{ updateForm.phone_number.id_for_label }}">Phone Number</label>
+                    </div>
+                    <div class="form-floating m-3">
+                        {{ updateForm.address }}
+                        <label for="{{ updateForm.address.id_for_label }}">Address</label>
+                    </div>
+                    <div class="form-floating m-3">
+                        <a class="btn btn-primary" href="{% url "updateUser" %}">Update Details</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -37,8 +37,12 @@
                 <div class="card-header text-center">
                     <h1>Orders</h1>
                 </div>
+                <div class="card-body text-center ">
+                    <h1>No Orders
+                </div>
             </div>
         </div>
     </div>    
 </div>
+<script>
 {% endblock body %}
