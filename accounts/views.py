@@ -2,7 +2,8 @@ from django.shortcuts import render,redirect,HttpResponse
 from accounts.forms import SignUpForm,LoginForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
-
+from accounts.forms import UpdateUserForm
+from accounts.models import Customer
 # Create your views here.
 def signupUser(request):
     form = SignUpForm()
@@ -44,3 +45,16 @@ def loginUser(request):
 def logoutUser(request):
     logout(request)
     return redirect('index')
+
+def updateUser(request):
+    updateForm = UpdateUserForm(request.POST,instance=request.user) 
+    current_user = Customer.objects.get(id=request.user.id)
+    if updateForm.is_valid():
+        updateForm.save()
+        login(request,request.user)
+        messages.success(request,"Update Successful")
+        return redirect('index')
+    else:
+        print(updateForm.errors)
+        messages.warning(request,'Some error occured')
+        return redirect('profile')

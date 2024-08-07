@@ -5,30 +5,39 @@
 <div class="container py-4">
     <div class="row">
         <div class="col-lg-4">
+            {% if updateForm.errors %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ updateForm.errors}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
             <div class="card">
-                <div class="card-body">
+                <div class="card-body p-0">
                     <div class="card-header text-center">
                         <h1>Profile</h1>
                     </div>
-                    <div class="form-floating m-3">
-                        {{ updateForm.username }}
-                        <label for="{{ updateForm.username.id_for_label }}">Username</label>
-                    </div>
-                    <div class="form-floating m-3">
-                        {{ updateForm.email }}
-                        <label for="{{ updateForm.email.id_for_label }}">Email</label>
-                    </div>
-                    <div class="form-floating m-3">
-                        {{ updateForm.phone_number }}
-                        <label for="{{ updateForm.phone_number.id_for_label }}">Phone Number</label>
-                    </div>
-                    <div class="form-floating m-3">
-                        {{ updateForm.address }}
-                        <label for="{{ updateForm.address.id_for_label }}">Address</label>
-                    </div>
-                    <div class="form-floating m-3">
-                        <a class="btn btn-primary" href="{% url "updateUser" %}">Update Details</a>
-                    </div>
+                    <form method="POST" action='{% url "updateUser" %}'>
+                        {% csrf_token %}
+                        <div class="form-floating m-3">
+                            {{ updateForm.username }}
+                            <label for="{{ updateForm.username.id_for_label }}">Username</label>
+                        </div>
+                        <div class="form-floating m-3">
+                            {{ updateForm.email }}
+                            <label for="{{ updateForm.email.id_for_label }}">Email</label>
+                        </div>
+                        <div class="form-floating m-3">
+                            {{ updateForm.phone_number }}
+                            <label for="{{ updateForm.phone_number.id_for_label }}">Phone Number</label>
+                        </div>
+                        <div class="form-floating m-3">
+                            {{ updateForm.address }}
+                            <label for="{{ updateForm.address.id_for_label }}">Address</label>
+                        </div>
+                        <div class="form-floating m-3">
+                            <input type='submit' class="btn btn-primary" value="Update Details"/>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
