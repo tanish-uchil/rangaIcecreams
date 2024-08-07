@@ -4,6 +4,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from accounts.forms import UpdateUserForm
 from accounts.models import Customer
+
+
 # Create your views here.
 def signupUser(request):
     form = SignUpForm()
@@ -51,7 +53,7 @@ def updateUser(request):
     current_user = Customer.objects.get(id=request.user.id)
     if updateForm.is_valid():
         updateForm.save()
-        login(request,request.user)
+        login(request,current_user)
         messages.success(request,"Update Successful")
         return redirect('index')
     else:
