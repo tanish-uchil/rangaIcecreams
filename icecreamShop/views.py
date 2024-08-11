@@ -1,7 +1,7 @@
 from django.shortcuts import render,HttpResponse
 from django.contrib.auth.decorators import login_required
 from accounts.forms import UpdateUserForm
-from accounts.models import Customer
+from icecreamShop.models import Products
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -17,7 +17,11 @@ def contact(request):
     return render(request,'icecreamShop/contact.html')
 
 def shop(request):
-    return render(request,"icecreamShop/shop.html")
+    products = Products.objects.all()
+    context = {
+        'products': products
+    }
+    return render(request,"icecreamShop/shop.html",context=context)
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
