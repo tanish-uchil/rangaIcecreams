@@ -2,5 +2,26 @@
 {% load static %}
 {% block title %}Cart{% endblock title %}
 {% block body %}
-<h1>Welcome to Cart Page</h1>
+<div class="container p-2">
+    <div class="row">
+        {% for cartItem in cart %}
+            <div class="card ">
+                <div class="row">
+                    <div class="col-2">
+                        {% comment %} image column {% endcomment %}
+                        <img src="{{ cartItem.item.image.url }}" class="card-img-top" alt="{{ cartItem.item.name }}" >
+                    </div>
+                    <div class="col">
+                        {% comment %} info column {% endcomment %}
+                        <h5 class="card-title">{{ cartItem.item.name }}</h5>
+                        <p class="card-text">{{ cartItem.item.description }}</p>
+                        <h6 class="card-text">Quantity:{{ cartItem.quantity }}</h6>
+                        <h6 class="card-text">Rs{{ cartItem.item.price}}</h6>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        <buttton class="btn btn-warning my-2">Checkout</button>
+    </div>
+</div>
 {% endblock body %}

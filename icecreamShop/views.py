@@ -1,8 +1,9 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,redirect,HttpResponse
 from django.contrib.auth.decorators import login_required
 from accounts.forms import UpdateUserForm
-from icecreamShop.models import Products
+from icecreamShop.models import Product,CartItem
 from django.contrib.auth import get_user_model
+from django.shortcuts import get_object_or_404
 
 User = get_user_model()
 
@@ -17,7 +18,7 @@ def contact(request):
     return render(request,'icecreamShop/contact.html')
 
 def shop(request):
-    products = Products.objects.all()
+    products = Product.objects.all()
     context = {
         'products': products
     }
@@ -34,4 +35,15 @@ def profile(request):
 
 @login_required
 def cart(request):
-    return render(request,"icecreamShop/cart.html")
+    cart = CartItem.objects.filter(user=request.user)
+    context = {
+        'cart' : cart
+    }
+    return render(request,"icecreamShop/cart.html",context=context)
+
+@login_required
+def add_to_cart(request,product_id):
+    product = get_object_or_404(Product,id=product_id)
+    item = CartItem(item=product,user=request.user)
+    item.save()
+    return redirect('cart') 

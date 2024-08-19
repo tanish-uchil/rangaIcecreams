@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator
-
+from accounts.models import Customer
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=30)
@@ -11,7 +11,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-class Products(models.Model):
+class Product(models.Model):
     name = models.CharField(max_length=20)
     image = models.ImageField(upload_to='product/images')
     price = models.IntegerField(validators=[MinValueValidator(20)])
@@ -26,3 +26,7 @@ class Products(models.Model):
     def __str__(self):
         return self.name
 
+class CartItem(models.Model):
+    item= models.ForeignKey(Product,on_delete=models.CASCADE)
+    user= models.ForeignKey(Customer,on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
